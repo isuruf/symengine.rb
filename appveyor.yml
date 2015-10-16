@@ -26,7 +26,7 @@ install:
   - bundler env
   - bundle install
 
-  - if [%PLATFORM%] == [x64] appveyor DownloadFile "https://raw.githubusercontent.com/symengine/dependencies/5cff7d1736877336cf9fb58267111beea4fa152f/gmp-6.0.0-x86_64-w64-mingw32.7z" -FileName gmp.7z
+  - if [%PLATFORM%] == [x64] appveyor DownloadFile "https://raw.githubusercontent.com/isuruf/symengine-dependencies/binaries2/gmp-6.0.0-x86_64-w64-mingw32.7z" -FileName gmp.7z
   - if [%PLATFORM%] == [Win32] appveyor DownloadFile " https://raw.githubusercontent.com/symengine/dependencies/e1e9dc3e7288ba06c96b452fb556b11ef6d5299f/gmp-6.0.0-i686-w64-mingw32.7z" -FileName gmp.7z
   - 7z x -oC:\gmp gmp.7z > NUL
   - set PATH=C:\gmp\bin\;%PATH%

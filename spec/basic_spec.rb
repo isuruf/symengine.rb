@@ -198,10 +198,10 @@ describe SymEngine do
       context 'with a Hash as argument' do
         it 'returns the expression with
             each key subtituted with its mapped value' do
-          expect(@e.subs(@x => @y, @z => @y)).to eql(3 * @y)
+          expect(@e.subs(@x => @y, @z => @y).to_s).to eql('3*y')
           k = SymEngine::Symbol.new('k')
           e = @e.subs(@x => k, @y => k / 2, @z => 2 * k)
-          expect(e).to eql((7 * k) / 2)
+          expect(e.to_s).to eql('(7/2)*k')
         end
       end
 

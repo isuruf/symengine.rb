@@ -214,6 +214,7 @@ int insert_entries(VALUE key, VALUE val, VALUE input) {
 
     basic_free_stack(ckey);
     basic_free_stack(cval);
+    return ST_CONTINUE;
 }
 
 VALUE cbasic_subs(int argc, VALUE *argv, VALUE self) {

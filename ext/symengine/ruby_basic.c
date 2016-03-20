@@ -207,6 +207,8 @@ int insert_entries(VALUE key, VALUE val, VALUE input) {
     basic_new_stack(cval);
     sympify(key, ckey);
     sympify(val, cval);
+    rb_warn("%s\n", basic_str(ckey));
+    rb_warn("%s\n", basic_str(cval));
 
     mapbasicbasic_insert(cmapbb, ckey, cval);
 

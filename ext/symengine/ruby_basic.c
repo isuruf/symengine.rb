@@ -222,6 +222,7 @@ VALUE cbasic_subs(int argc, VALUE *argv, VALUE self) {
     Data_Get_Struct(self, basic_struct, this);
 
     rb_scan_args(argc, argv, "11", &val_a, &val_b); // 1 mandatory and 1 optional parameter
+    rb_warn("%d\n", argc);
     if (argc == 1) {
         Check_Type(val_a, T_HASH);
         CMapBasicBasic *cmapbb = mapbasicbasic_new();

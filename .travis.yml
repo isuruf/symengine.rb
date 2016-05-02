@@ -16,6 +16,7 @@ rvm:
  - 2.0
 
 install:
+  - ls /Users/travis/.rvm/rubies/ruby-2.0.0-p576/lib
   - export RUBY_SOURCE_DIR=`pwd`
   - export TEST_CPP="no"
 

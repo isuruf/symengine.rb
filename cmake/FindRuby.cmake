@@ -51,7 +51,7 @@
 #   RUBY_LIBRUBYARG=`$RUBY -r rbconfig -e 'printf("%s",Config::CONFIG@<:@"LIBRUBYARG_SHARED"@:>@)'`
 
 # uncomment the following line to get debug output for this file
-# set(_RUBY_DEBUG_OUTPUT TRUE)
+set(_RUBY_DEBUG_OUTPUT TRUE)
 
 # Determine the list of possible names of the ruby executable depending
 # on which version of ruby is required

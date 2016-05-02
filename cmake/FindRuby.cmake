@@ -53,6 +53,9 @@
 # uncomment the following line to get debug output for this file
 set(_RUBY_DEBUG_OUTPUT TRUE)
 
+set(CMAKE_FIND_FRAMEWORK LAST)
+set(CMAKE_FIND_APPBUNDLE LAST)
+
 # Determine the list of possible names of the ruby executable depending
 # on which version of ruby is required
 set(_RUBY_POSSIBLE_EXECUTABLE_NAMES ruby)

@@ -46,6 +46,12 @@ test_script:
   - gem install gem-path --no-ri --no-rdoc
   - gem path symengine > temp.txt
   - set /p RUBY_GEM_DIR=<temp.txt
+
+  # Add conda to path
+  - gem path conda > temp.txt
+  - set /p CONDA_GEM_DIR=<temp.txt
+  - set PATH=%CONDA_GEM_DIR%\usr\Library\bin;%PATH%
+
   # Test ruby gem
   - cd %RUBY_GEM_DIR%
   - bundle exec rspec
@@ -54,5 +60,5 @@ test_script:
 # Enable this to be able to login to the build worker. You can use the
 # `remmina` program in Ubuntu, use the login information that the line below
 # prints into the log.
-#on_finish:
-#- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+on_finish:
+- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))

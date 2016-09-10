@@ -35,41 +35,51 @@ matrix:
       env: BUILD_TYPE="Debug" WITH_BFD="yes" WITH_MPFR="yes"
     - os: osx
       rvm: 2.0
+      env: USE_CONDA="true"
+    - os: linux
+      rvm: 2.2
+      env: USE_CONDA="true"
   allow_failures:
     - os: osx
       rvm: 2.0
+      env: USE_CONDA="true"
+    - os: linux
+      rvm: 2.2
+      env: USE_CONDA="true"
 
 install:
   - export RUBY_SOURCE_DIR=`pwd`
-  - export TEST_CPP="no"
-
-  - git clone https://github.com/symengine/symengine symengine-cpp
-  - cd symengine-cpp
-  - git config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
-  - git fetch origin
-  - git checkout `cat ../symengine_version.txt`
-
-  # Setup travis for C++ library
-  - source bin/install_travis.sh
-
-  # Build C++ library
-  - bin/test_travis.sh
+  - if [[ "${USE_CONDA}" != "true" ]]; then
+        export TEST_CPP="no";
+        git clone https://github.com/symengine/symengine symengine-cpp;
+        cd symengine-cpp;
+        git config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*';
+        git fetch origin;
+        git checkout `cat ../symengine_version.txt`;
+        source bin/install_travis.sh;
+        bin/test_travis.sh;
+    fi
 
   # Setup travis for Ruby wrappers
   - cd $RUBY_SOURCE_DIR
   - bundle install
 
 script:
+  - export GEM_VERSION=`ruby -e 'puts Gem::Specification::load("symengine.gemspec").version.to_s'`
   # Build ruby gem
   - gem build symengine.gemspec
   # Convert all warnings to errors
   - export CFLAGS="-Werror"
   # Install ruby gem
-  - gem install symengine-0.1.0.gem --install-dir $HOME --verbose -- -DSymEngine_DIR=$our_install_dir
+  - if [[ "${USE_CONDA}" != "true" ]]; then
+        gem install symengine-$GEM_VERSION.gem --install-dir $HOME --verbose -- -DSymEngine_DIR=$our_install_dir;
+    else
+        gem install symengine-$GEM_VERSION.gem --install-dir $HOME --verbose;
+    fi
 
   # Test ruby gem
   - gem install gem-path --no-ri --no-rdoc
-  - cd $HOME/gems/symengine-0.1.0/
+  - cd $HOME/gems/symengine-$GEM_VERSION/
   - bundle exec rspec
 
 notifications:

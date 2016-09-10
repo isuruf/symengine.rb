@@ -12,6 +12,7 @@ VALUE csymbol_init(VALUE self, VALUE name_or_id)
             str_ptr = rb_id2name(rb_to_id(name_or_id));
             break;
         default:
+            str_ptr = "Fix for clang warning";
             rb_raise(rb_eTypeError,
                      "wrong argument type %s (expected Symbol or String)",
                      rb_obj_classname(name_or_id));

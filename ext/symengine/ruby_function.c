@@ -1,7 +1,5 @@
 #include "ruby_function.h"
 
-typedef struct CVecBasic CVecBasic;
-
 #define IMPLEMENT_ONE_ARG_FUNC(func)                                           \
     VALUE cfunction_##func(VALUE self, VALUE operand1)                         \
     {                                                                          \

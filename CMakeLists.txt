@@ -4,7 +4,7 @@ project(ruby_wrapper)
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 set(CMAKE_PREFIX_PATH ${SymEngine_DIR} ${CMAKE_PREFIX_PATH})
-find_package(SymEngine 0.1.0 REQUIRED CONFIG
+find_package(SymEngine 0.2.0 REQUIRED CONFIG
              PATH_SUFFIXES lib/cmake/symengine CMake/)
 set(CMAKE_BUILD_TYPE ${SYMENGINE_BUILD_TYPE})
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")

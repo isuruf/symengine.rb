@@ -33,7 +33,7 @@ if not symengine_found
     Conda.add_channel("symengine")
     Conda.add("symengine")
     if is_windows
-        libdir = File.join(Conda::PREFIX, "CMake")
+        libdir = File.join(Conda::PREFIX, "Library", "CMake")
     else
         libdir = File.join(Conda::PREFIX, "lib", "cmake")
     end

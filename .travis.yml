@@ -20,6 +20,8 @@ rvm:
  - 2.2
  - 2.3.0
 
+env: USE_CONDA="false"
+
 matrix:
   exclude:
     - os: osx

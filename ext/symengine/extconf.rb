@@ -23,7 +23,7 @@ end
 
 args = ARGV.join(" ")
 
-cmd = "#{cmake} #{generator} -DCMAKE_INSTALL_PREFIX=../../ -DRUBY_EXECUTABLE=#{ruby_executable} #{args} ../../ "
+cmd = "#{cmake} #{generator} -DCMAKE_INSTALL_PREFIX=../../ -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=yes -DRUBY_EXECUTABLE=#{ruby_executable} #{args} ../../ "
 symengine_found = system(cmd)
 
 if not symengine_found

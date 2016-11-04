@@ -4,11 +4,11 @@ ruby_executable = File.join(RbConfig::CONFIG['bindir'], RbConfig::CONFIG['RUBY_I
 
 generator = ''
 
-if RbConfig::CONFIG['host_os'] =~ /mswin|mingw/
+is_windows = (RbConfig::CONFIG['host_os'] =~ /mswin|mingw/)
+
+if is_windows
   generator = '-G "MSYS Makefiles"'
 end
-
-is_windows = (RbConfig::CONFIG['host_os'] =~ /mswin|mingw/)
 
 # Check if cmake is installed
 cmake_found = system('cmake --version')
@@ -37,7 +37,7 @@ unless symengine_found
   require 'conda'
   Conda.add_channel('conda-forge')
   Conda.add_channel('symengine')
-  Conda.add('symengine')
+  Conda.add('symengine==0.2.0')
   libdir = if is_windows
              File.join(Conda::PREFIX, 'Library', 'CMake')
            else

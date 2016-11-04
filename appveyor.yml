@@ -5,7 +5,6 @@ environment:
   matrix:
     - RUBY_VERSION: "200-x64"
       PLATFORM: "x64"
-      CONDA: "true"
     - RUBY_VERSION: "200"
       PLATFORM: "Win32"
     - RUBY_VERSION: "21-x64"

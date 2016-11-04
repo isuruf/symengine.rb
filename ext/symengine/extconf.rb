@@ -38,11 +38,15 @@ unless symengine_found
   Conda.add_channel('conda-forge')
   Conda.add_channel('symengine')
   Conda.add('symengine==0.2.0')
+  # TODO: fix this
+  if is_windows
+    raise 'libsymengine not found'
+  end
   libdir = if is_windows
              File.join(Conda::PREFIX, 'Library', 'CMake')
            else
              File.join(Conda::PREFIX, 'lib', 'cmake')
            end
-  cmd += "-DSymEngine_DIR=#{libdir}"
+  cmd += " -DSymEngine_DIR=#{libdir}"
   raise 'Something went wrong with configuring symengine gem' unless system(cmd)
 end

@@ -20,9 +20,16 @@ include_directories(BEFORE ${RUBY_INCLUDE_DIRS})
 
 add_library(symengine_ruby SHARED ${RUBY_WRAPPER_SRC})
 target_link_libraries(symengine_ruby ${SYMENGINE_LIBRARIES} ${RUBY_LIBRARY})
+
+if (APPLE)
+    set(SYMENGINE_LIBRARY_SUFFIX ".bundle")
+else
+    set(SYMENGINE_LIBRARY_SUFFIX ".so")
+endif()
+
 set_target_properties(symengine_ruby PROPERTIES
                         PREFIX ""
-                        SUFFIX ".so"
+                        SUFFIX ${SYMENGINE_LIBRARY_SUFFIX}
                         OUTPUT_NAME "symengine"
                         LIBRARY_OUTPUT_DIRECTORY "${ruby_wrapper_BINARY_DIR}/lib/symengine"
                      )

@@ -34,7 +34,7 @@ matrix:
       env: BUILD_TYPE="Debug" WITH_BFD="yes" WITH_MPC="yes"
     - os: osx
       rvm: 2.3.0
-      env: BUILD_TYPE="Debug" WITH_BFD="yes" WITH_MPFR="yes"
+      env: BUILD_TYPE="Debug" WITH_BFD="yes" CC="clang" CXX="clang++"
     - os: osx
       rvm: 2.0
       env: USE_CONDA="true"
@@ -50,6 +50,9 @@ matrix:
       env: USE_CONDA="true"
 
 install:
+  - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
+        brew unlink cmake;
+    fi
   - export RUBY_SOURCE_DIR=`pwd`
   - if [[ "${USE_CONDA}" != "true" ]]; then
         export TEST_CPP="no";

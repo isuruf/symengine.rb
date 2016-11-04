@@ -32,7 +32,7 @@ matrix:
     - os: linux
       rvm: 2.3.0
       env: BUILD_TYPE="Debug" WITH_BFD="yes" WITH_MPC="yes"
-    - os: linux
+    - os: osx
       rvm: 2.3.0
       env: BUILD_TYPE="Debug" WITH_BFD="yes" WITH_MPFR="yes"
     - os: osx

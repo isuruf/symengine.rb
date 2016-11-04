@@ -23,7 +23,7 @@ target_link_libraries(symengine_ruby ${SYMENGINE_LIBRARIES} ${RUBY_LIBRARY})
 
 if (APPLE)
     set(SYMENGINE_LIBRARY_SUFFIX ".bundle")
-else
+else()
     set(SYMENGINE_LIBRARY_SUFFIX ".so")
 endif()
 

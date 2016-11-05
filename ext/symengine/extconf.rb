@@ -18,7 +18,7 @@ unless cmake_found
   require 'conda'
   Conda.add_channel('conda-forge')
   Conda.add('cmake')
-  cmake = File.join(Conda.SCRIPTDIR, 'cmake')
+  cmake = File.join(Conda::SCRIPTDIR, 'cmake')
 end
 
 args = ARGV.join(' ')

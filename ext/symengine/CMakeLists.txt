@@ -34,6 +34,8 @@ set_target_properties(symengine_ruby PROPERTIES
                         LIBRARY_OUTPUT_DIRECTORY "${ruby_wrapper_BINARY_DIR}/lib/symengine"
                      )
 
+set_target_properties(symengine_ruby PROPERTIES MACOSX_BUNDLE TRUE)
+
 # Ruby gems require a install target.
 install(TARGETS symengine_ruby
             RUNTIME DESTINATION lib/symengine

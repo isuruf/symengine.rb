@@ -36,14 +36,20 @@ matrix:
       rvm: 2.3.0
       env: BUILD_TYPE="Debug" WITH_BFD="yes" CC="clang" CXX="clang++"
     - os: osx
-      rvm: 2.0
+      rvm: 2.3.0
+      env: USE_CONDA="true"
+    - os: osx
+      rvm: 2.3.0-clang
       env: USE_CONDA="true"
     - os: linux
       rvm: 2.2
       env: USE_CONDA="true"
   allow_failures:
     - os: osx
-      rvm: 2.0
+      rvm: 2.3.0
+      env: USE_CONDA="true"
+    - os: osx
+      rvm: 2.3.0-clang
       env: USE_CONDA="true"
     - os: linux
       rvm: 2.2
@@ -88,6 +94,10 @@ script:
   - gem install gem-path --no-ri --no-rdoc
   - cd $HOME/gems/symengine-$GEM_VERSION/
   - bundle exec rspec
+  - cat ~/Library/Logs/CrashReporter
+  - cat /Library/Logs/CrashReporter
+  - cat ~/Library/Logs/DiagnosticReports
+  - cat /Library/Logs/DiagnosticReports
 
 notifications:
   email: false
